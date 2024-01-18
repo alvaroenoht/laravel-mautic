@@ -5,6 +5,7 @@ namespace Combindma\Mautic\Resources;
 use Combindma\Mautic\Requests\CreateContactRequest;
 use Combindma\Mautic\Requests\DeleteContactRequest;
 use Combindma\Mautic\Requests\EditContactRequest;
+use Combindma\Mautic\Requests\SearchContactRequest;
 use Exception;
 use Illuminate\Support\Facades\Log;
 use Saloon\Http\Response;
@@ -54,5 +55,21 @@ class ContactResource extends Resource
         }
 
         return null;
+    }
+
+    public function search(string $email): ?Response
+    {
+        if ($this->connector->isApiDisabled()) {
+            return null;
+        }
+
+        try {
+            return $this->connector->send(new SearchContactRequest($id));
+        } catch (Exception $e) {
+            Log::error($e);
+        }
+
+        return null;
+
     }
 }
