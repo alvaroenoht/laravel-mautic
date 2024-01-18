@@ -7,7 +7,7 @@ use Saloon\Http\Request;
 
 class DeleteContactRequest extends Request
 {
-    protected Method $method = Method::POST;
+    protected Method $method = Method::DELETE;
 
     public function __construct(protected int $id)
     {

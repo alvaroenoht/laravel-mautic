@@ -1,7 +1,6 @@
 <?php
 
 namespace Combindma\Mautic\Requests;
-
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -13,7 +12,7 @@ class searchContactRequest extends Request implements HasBody
 
     protected Method $method = Method::GET;
 
-    public function __construct(protected int $email)
+    public function __construct(protected string $email)
     {
         //
     }
